@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Propuesta Completa – Fundación Motos en Chile</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --marino:     #1B2A4A;
+    --marino-mid: #243659;
+    --marino-claro: #EEF2F8;
+    --plata:      #8A95A3;
+    --plata-claro:#D6DCE4;
+    --acento:     #2E6DA4;
+    --acento-claro:#E3EDF7;
+    --blanco:     #FFFFFF;
+    --texto:      #1a1a2e;
+    --muted:      #6B7280;
+    --fondo:      #F5F6F8;
+    --borde:      #DDE1E8;
+    --ok:         #2E6DA4;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: var(--fondo);
+    color: var(--texto);
+    line-height: 1.65;
+  }
+
+  /* ══ HEADER ══ */
+  .header {
+    background: var(--marino);
+    color: var(--blanco);
+    padding: 56px 48px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .header::after {
+    content: '';
+    position: absolute;
+    top: -60px; right: -60px;
+    width: 340px; height: 340px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -20px; right: -20px;
+    width: 220px; height: 220px;
+    border-radius: 50%;
+    border: 1px solid rgba(255,255,255,0.04);
+  }
+
+  .header-inner { position: relative; z-index: 2; display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 24px; }
+
+  .header-left {}
+
+  .badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    color: rgba(255,255,255,0.85);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 5px 14px;
+    border-radius: 2px;
+    margin-bottom: 16px;
+    font-weight: 500;
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(28px, 4vw, 46px);
+    font-weight: 700;
+    line-height: 1.15;
+    max-width: 520px;
+    margin-bottom: 12px;
+    color: var(--blanco);
+  }
+
+  .header-sub {
+    font-size: 14px;
+    color: rgba(255,255,255,0.55);
+    max-width: 460px;
+    line-height: 1.7;
+  }
+
+  .header-right {
+    text-align: right;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.9;
+    flex-shrink: 0;
+  }
+
+  .header-right strong {
+    display: block;
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.85);
+    font-weight: 500;
+  }
+
+  /* ══ INTRO ══ */
+  .intro {
+    background: var(--blanco);
+    border-bottom: 1px solid var(--borde);
+    padding: 24px 48px;
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.8;
+  }
+
+  .intro strong { color: var(--texto); }
+
+  /* ══ SEPARADOR DE PARTE ══ */
+  .parte-sep {
+    background: var(--marino-claro);
+    border-top: 1px solid var(--borde);
+    border-bottom: 1px solid var(--borde);
+    padding: 14px 48px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .parte-num {
+    background: var(--acento);
+    color: var(--blanco);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    padding: 3px 10px;
+    border-radius: 2px;
+  }
+
+  .parte-titulo {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--marino);
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+
+  /* ══ SECCIÓN TÍTULO ══ */
+  .seccion { padding: 44px 48px 0; }
+
+  .seccion-label {
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--acento);
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+
+  .seccion-titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--marino);
+    margin-bottom: 6px;
+  }
+
+  .seccion-desc {
+    font-size: 13.5px;
+    color: var(--muted);
+    max-width: 600px;
+    margin-bottom: 28px;
+    line-height: 1.7;
+  }
+
+  /* ══ ALERTA COMPARATIVA ══ */
+  .alerta-comp {
+    margin: 0 48px 32px;
+    background: var(--acento-claro);
+    border: 1px solid #b8d4ed;
+    border-radius: 8px;
+    padding: 18px 22px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .alerta-col h4 {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--acento);
+    margin-bottom: 8px;
+  }
+
+  .alerta-col ul { list-style: none; display: flex; flex-direction: column; gap: 5px; }
+
+  .alerta-col ul li {
+    font-size: 12.5px;
+    color: var(--texto);
+    display: flex;
+    gap: 7px;
+    line-height: 1.45;
+  }
+
+  .alerta-col ul li .icon { flex-shrink: 0; }
+
+  /* ══ GRILLAS ══ */
+  .planes {
+    padding: 0 48px 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .plan {
+    border: 1.5px solid var(--borde);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--blanco);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .plan:hover {
+    box-shadow: 0 8px 32px rgba(27,42,74,0.1);
+    transform: translateY(-2px);
+  }
+
+  .plan.destacado { border-color: var(--acento); }
+
+  .plan-ribbon {
+    background: var(--acento);
+    color: var(--blanco);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 7px;
+  }
+
+  .plan-header {
+    padding: 24px 24px 18px;
+    background: var(--marino);
+    color: var(--blanco);
+  }
+
+  .plan.destacado .plan-header { background: var(--marino-mid); }
+
+  .plan-icon { font-size: 20px; margin-bottom: 8px; }
+
+  .plan-nombre {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--blanco);
+  }
+
+  .plan-subtipo {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 2px 9px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+
+  .subtipo-wp { background: rgba(70,180,120,0.2); color: #7ee8a2; }
+  .subtipo-cod { background: rgba(100,160,230,0.2); color: #93c5fd; }
+
+  .plan-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 14px;
+    line-height: 1.55;
+  }
+
+  .precio-bloque {
+    background: rgba(255,255,255,0.07);
+    border-radius: 6px;
+    padding: 12px 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .precio-etiqueta {
+    font-size: 10px;
+    color: rgba(255,255,255,0.38);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+
+  .precio-valor {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--blanco);
+    line-height: 1.1;
+  }
+
+  .plan.destacado .precio-valor { color: #93c5fd; }
+
+  .precio-unit {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.38);
+    font-weight: 300;
+    margin-left: 3px;
+  }
+
+  .plan-body { padding: 20px 24px; flex: 1; }
+
+  .bloque-tit {
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 8px;
+    margin-top: 14px;
+  }
+
+  .bloque-tit:first-child { margin-top: 0; }
+
+  .items { list-style: none; display: flex; flex-direction: column; gap: 6px; }
+
+  .items li {
+    font-size: 13px;
+    color: var(--texto);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.45;
+  }
+
+  .items li .ok { color: var(--ok); font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .items li .no { color: #ccc; flex-shrink: 0; margin-top: 1px; }
+  .items li.off { color: #bbb; }
+
+  .plan-foot {
+    padding: 14px 24px 18px;
+    background: var(--fondo);
+    border-top: 1px solid var(--borde);
+  }
+
+  .plan-foot p { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .plan-foot strong { color: var(--texto); }
+
+  /* ══ CONDICIONES ══ */
+  .cond-wrap { padding: 0 48px 48px; }
+
+  .cond-card {
+    background: var(--marino);
+    color: var(--blanco);
+    border-radius: 10px;
+    padding: 30px 32px;
+  }
+
+  .cond-card h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 22px;
+    color: var(--blanco);
+  }
+
+  .cond-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+    gap: 18px;
+  }
+
+  .cond-item h3 {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #93c5fd;
+    margin-bottom: 5px;
+    font-weight: 600;
+  }
+
+  .cond-item p { font-size: 12.5px; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+  /* ══ DIVISOR ══ */
+  .divisor { height: 1px; background: var(--borde); margin: 0 48px; }
+
+  /* ══ PACKS MENSUALES ══ */
+  .packs {
+    padding: 0 48px 48px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(268px, 1fr));
+    gap: 20px;
+    margin-top: 24px;
+  }
+
+  .pack {
+    border: 1.5px solid var(--borde);
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: var(--blanco);
+    transition: box-shadow 0.2s, transform 0.2s;
+  }
+
+  .pack:hover {
+    box-shadow: 0 8px 32px rgba(27,42,74,0.1);
+    transform: translateY(-2px);
+  }
+
+  .pack.estrella { border-color: var(--acento); }
+
+  .pack-top-tag {
+    background: var(--acento);
+    color: var(--blanco);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 7px;
+  }
+
+  .pack-head {
+    padding: 24px 24px 18px;
+    background: var(--marino);
+    color: var(--blanco);
+  }
+
+  .pack.estrella .pack-head { background: var(--marino-mid); }
+
+  .pack-emoji { font-size: 20px; margin-bottom: 8px; }
+
+  .pack-nombre {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 4px;
+    color: var(--blanco);
+  }
+
+  .pack-tagline {
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+    margin-bottom: 14px;
+    line-height: 1.5;
+  }
+
+  .pack-precio-wrap {
+    background: rgba(255,255,255,0.07);
+    border-radius: 6px;
+    padding: 12px 16px;
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .pack-precio-label {
+    font-size: 10px;
+    color: rgba(255,255,255,0.38);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+  }
+
+  .pack-precio {
+    font-family: 'Playfair Display', serif;
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--blanco);
+    line-height: 1.1;
+  }
+
+  .pack.estrella .pack-precio { color: #93c5fd; }
+
+  .pack-precio-unit {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    color: rgba(255,255,255,0.38);
+    font-weight: 300;
+    margin-left: 3px;
+  }
+
+  .pack-body { padding: 20px 24px; flex: 1; }
+
+  .redes-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; margin-bottom: 10px; }
+
+  .chip {
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: var(--fondo);
+    color: var(--muted);
+  }
+
+  .chip.activo { background: var(--acento-claro); color: var(--acento); font-weight: 600; }
+
+  .pack-foot {
+    padding: 14px 24px 18px;
+    background: var(--fondo);
+    border-top: 1px solid var(--borde);
+  }
+
+  .pack-foot p { font-size: 12px; color: var(--muted); line-height: 1.55; }
+  .pack-foot strong { color: var(--texto); }
+
+  /* ══ REDES GUÍA ══ */
+  .redes-section { padding: 44px 48px 48px; }
+
+  .redes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin-top: 22px;
+  }
+
+  .red-card {
+    border: 1.5px solid var(--borde);
+    border-radius: 10px;
+    padding: 20px;
+    background: var(--blanco);
+  }
+
+  .red-card h3 { font-size: 14px; font-weight: 600; margin-bottom: 4px; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+
+  .dificultad { font-size: 10.5px; padding: 2px 8px; border-radius: 10px; font-weight: 600; }
+  .dif-baja { background: var(--acento-claro); color: var(--acento); }
+  .dif-media { background: #fff3e0; color: #b56a00; }
+
+  .red-card p { font-size: 12.5px; color: var(--muted); margin-top: 8px; line-height: 1.55; }
+  .red-card .rec { font-size: 11.5px; margin-top: 10px; font-weight: 600; color: var(--acento); }
+
+  /* ══ NOTA FINAL ══ */
+  .nota-section {
+    background: var(--marino-claro);
+    padding: 30px 48px;
+    border-top: 1px solid var(--borde);
+    border-bottom: 1px solid var(--borde);
+  }
+
+  .nota-section h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--marino);
+    margin-bottom: 10px;
+  }
+
+  .nota-section p { font-size: 13.5px; color: #3a4a5a; max-width: 700px; line-height: 1.75; }
+  .nota-section p strong { color: var(--marino); }
+
+  /* ══ FOOTER ══ */
+  .footer-doc {
+    background: var(--marino);
+    text-align: center;
+    padding: 26px 48px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.35);
+  }
+
+  .footer-doc strong { color: rgba(255,255,255,0.65); }
+
+  @media (max-width: 640px) {
+    .header, .intro, .seccion, .planes, .packs, .cond-wrap, .redes-section, .nota-section, .footer-doc, .parte-sep, .alerta-comp { padding-left: 20px; padding-right: 20px; }
+    .alerta-comp { grid-template-columns: 1fr; margin-left: 20px; margin-right: 20px; }
+    .divisor { margin: 0 20px; }
+    .header-right { text-align: left; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ HEADER ══ -->
+<div class="header">
+  <div class="header-inner">
+    <div class="header-left">
+      <div class="badge">Propuesta Comercial Integral</div>
+      <h1>Desarrollo Web &amp;<br>Gestión Digital</h1>
+      <p class="header-sub">Propuesta de servicios para Fundación Motos en Chile. Incluye desarrollo del sitio web, correo profesional y plan de mantención mensual con gestión de redes sociales.</p>
+    </div>
+    <div class="header-right">
+      Válida por<strong>30 días</strong>
+      Emisión<strong>Abril 2025</strong>
+      Preparada por<strong>Paula Castillo Beltrán</strong>
+      Para<strong>Fundación Motos en Chile</strong>
+    </div>
+  </div>
+</div>
+
+<!-- ══ INTRO ══ -->
+<div class="intro">
+  <strong>Estimado equipo de Fundación Motos en Chile:</strong> A continuación presento una propuesta integral que incluye el desarrollo del sitio web (en dos modalidades), configuración de correo profesional y opciones de mantención mensual con gestión de redes sociales. Los precios están en pesos chilenos (CLP) e incluyen IVA. <em>Antes de iniciar el proyecto se realizará una reunión de toma de requerimientos sin costo.</em>
+</div>
+
+<!-- ══ PARTE 1 ══ -->
+<div class="parte-sep">
+  <span class="parte-num">01</span>
+  <span class="parte-titulo">Desarrollo del Sitio Web</span>
+</div>
+
+<!-- COMPARATIVA WP VS CÓDIGO -->
+<div class="seccion">
+  <div class="seccion-label">Importante antes de elegir</div>
+  <div class="seccion-titulo">WordPress vs. Código personalizado</div>
+  <div class="seccion-desc">Existen dos formas de construir un sitio web. Cada una tiene ventajas según las necesidades y el presupuesto de la fundación.</div>
+</div>
+
+<div class="alerta-comp">
+  <div class="alerta-col">
+    <h4>🟢 WordPress (plantilla)</h4>
+    <ul>
+      <li><span class="icon">✓</span> Más económico y rápido de implementar</li>
+      <li><span class="icon">✓</span> El cliente puede editar textos e imágenes solo</li>
+      <li><span class="icon">✓</span> Amplia variedad de diseños disponibles</li>
+      <li><span class="icon">⚠️</span> Diseño limitado a la plantilla elegida</li>
+      <li><span class="icon">⚠️</span> Menos flexible para cambios estructurales</li>
+      <li><span class="icon">⚠️</span> Requiere actualizaciones periódicas de seguridad</li>
+    </ul>
+  </div>
+  <div class="alerta-col">
+    <h4>🔵 Código personalizado (HTML/CSS/JS)</h4>
+    <ul>
+      <li><span class="icon">✓</span> Diseño 100% a medida, sin limitaciones visuales</li>
+      <li><span class="icon">✓</span> Mayor rendimiento y velocidad de carga</li>
+      <li><span class="icon">✓</span> Cualquier cambio futuro es posible por código</li>
+      <li><span class="icon">⚠️</span> Mayor costo de desarrollo</li>
+      <li><span class="icon">⚠️</span> Cambios de contenido requieren apoyo técnico</li>
+    </ul>
+  </div>
+</div>
+
+<!-- PLANES -->
+<div class="planes">
+
+  <!-- WORDPRESS BÁSICO -->
+  <div class="plan">
+    <div class="plan-header">
+      <div class="plan-icon">🌐</div>
+      <div class="plan-nombre">WordPress Esencial</div>
+      <span class="plan-subtipo subtipo-wp">WordPress · Plantilla</span>
+      <div class="plan-desc">Sitio informativo sobre plantilla profesional. Rápido, funcional y administrable por el propio cliente.</div>
+      <div class="precio-bloque">
+        <div class="precio-etiqueta">Desarrollo único</div>
+        <div class="precio-valor">$220.000 <span class="precio-unit">CLP</span></div>
+      </div>
+    </div>
+    <div class="plan-body">
+      <div class="bloque-tit">📄 Sitio Web</div>
+      <ul class="items">
+        <li><span class="ok">✓</span> Instalación y configuración de WordPress</li>
+        <li><span class="ok">✓</span> Plantilla profesional seleccionada según identidad</li>
+        <li><span class="ok">✓</span> Hasta 4 páginas (Inicio, Quiénes somos, Proyectos, Contacto)</li>
+        <li><span class="ok">✓</span> Formulario de contacto</li>
+        <li><span class="ok">✓</span> Diseño responsive (adaptado a celular)</li>
+        <li><span class="ok">✓</span> Integración de redes sociales</li>
+        <li><span class="ok">✓</span> Capacitación básica para editar contenido</li>
+        <li class="off"><span class="no">✗</span> Blog o noticias</li>
+        <li class="off"><span class="no">✗</span> Botón de donaciones</li>
+        <li class="off"><span class="no">✗</span> Diseño visual a medida</li>
+      </ul>
+      <div class="bloque-tit">📧 Correo Profesional</div>
+      <ul class="items">
+        <li><span class="ok">✓</span> Configuración de 1 cuenta (ej: contacto@fundacion.cl)</li>
+        <li><span class="ok">✓</span> Google Workspace o Zoho Mail (costo aparte del cliente)</li>
+      </ul>
+    </div>
+    <div class="plan-foot">
+      <p>⏱ Plazo: <strong>1 a 2 semanas</strong> · Opción más rápida y económica para comenzar.</p>
+    </div>
+  </div>
+
+  <!-- CÓDIGO ESENCIAL -->
+  <div class="plan">
+    <div class="plan-header">
+      <div class="plan-icon">💻</div>
+      <div class="plan-nombre">Código Esencial</div>
+      <span class="plan-subtipo subtipo-cod">Código personalizado</span>
+      <div class="plan-desc">Página informativa desarrollada completamente a medida. Sin limitaciones de diseño.</div>
+      <div class="precio-bloque">
+        <div class="precio-etiqueta">Desarrollo único</div>
+        <div class="precio-valor">$350.000 <span class="precio-unit">CLP</span></div>
+      </div>
+    </div>
+    <div class="plan-body">
+      <div class="bloque-tit">📄 Sitio Web</div>
+      <ul class="items">
+        <li><span class="ok">✓</span> Hasta 4 secciones (Inicio, Quiénes somos, Proyectos, Contacto)</li>
+        <li><span class="ok">✓</span> Diseño 100% personalizado según identidad visual</li>
+        <li><span class="ok">✓</span> Diseño responsive (adaptado a celular)</li>
+        <li><span class="ok">✓</span> Formulario de contacto</li>
+        <li><span class="ok">✓</span> Integración de redes sociales</li>
+        <li><span class="ok">✓</span> Google Maps si corresponde</li>
+        <li class="off"><span class="no">✗</span> Blog o noticias</li>
+        <li class="off"><span class="no">✗</span> Botón de donaciones</li>
+      </ul>
+      <div class="bloque-tit">📧 Correo Profesional</div>
+      <ul class="items">
+        <li><span class="ok">✓</span> Configuración de 1 cuenta</li>
+        <li><span class="ok">✓</span> Google Workspace o Zoho Mail (costo aparte del cliente)</li>
+      </ul>
+    </div>
+    <div class="plan-foot">
+      <p>⏱ Plazo: <strong>2 a 3 semanas</strong> · Diseño único, modificable en el futuro por código.</p>
+    </div>
+  </div>
+
+  <!-- CÓDIGO COMPLETO -->
+  <div class="plan destacado">
+    <div class="plan-ribbon">⭐ Más recomendado</div>
+    <div class="plan-header">
+      <div class="plan-icon">🚀</div>
+      <div class="plan-nombre">Código Completo</div>
+      <span class="plan-subtipo subtipo-cod">Código personalizado</span>
+      <div class="plan-desc">Sitio completo con blog, galería, donaciones y más cuentas de correo. Totalmente a medida.</div>
+      <div class="precio-bloque">
+        <div class="precio-etiqueta">Desarrollo único</div>
+        <div class="precio-valor">$600.000 <span class="precio-unit">CLP</span></div>
+      </div>
+    </div>
+    <div class="plan-body">
+      <div class="bloque-tit">📄 Sitio Web</div>
+      <ul class="items">
+        <li><span class="ok">✓</span> Hasta 6 secciones + Blog / Noticias</li>
+        <li><span class="ok">✓</span> Diseño personalizado con identidad visual</li>
+        <li><span class="ok">✓</span> Galería de imágenes o proyectos</li>
+        <li><span class="ok">✓</span> Formulario de contacto avanzado</li>
+        <li><span class="ok">✓</span> Botón de donaciones vía Mercado Pago</li>
+        <li><span class="ok">✓</span> Integración de redes sociales</li>
+        <li><span class="ok">✓</span> Google Analytics básico</li>
+      </ul>
+      <div class="bloque-tit">📧 Correo Profesional</div>
+      <ul class="items">
+        <li><span class="ok">✓</span> Hasta 3 cuentas configuradas</li>
+        <li><span class="ok">✓</span> Configuración DNS y verificación de dominio</li>
+        <li><span class="ok">✓</span> Tutorial de uso para el equipo</li>
+      </ul>
+    </div>
+    <div class="plan-foot">
+      <p>⏱ Plazo: <strong>3 a 4 semanas</strong> · El más completo. Diseño a medida y escalable.</p>
+    </div>
+  </div>
+
+  <!-- CÓDIGO PREMIUM -->
+  <div class="plan">
+    <div class="plan-header">
+      <div class="plan-icon">🏆</div>
+      <div class="plan-nombre">Código Premium</div>
+      <span class="plan-subtipo subtipo-cod">Código personalizado</span>
+      <div class="plan-desc">Sitio avanzado con formularios de postulación, SEO y capacitación al equipo.</div>
+      <div class="precio-bloque">
+        <div class="precio-etiqueta">Desarrollo único</div>
+        <div class="precio-valor">$950.000 <span class="precio-unit">CLP</span></div>
+      </div>
+    </div>
+    <div class="plan-body">
+      <div class="bloque-tit">📄 Sitio Web</div>
+      <ul class="items">
+        <li><span class="ok">✓</span> Secciones ilimitadas + Blog completo</li>
+        <li><span class="ok">✓</span> Diseño premium 100% a medida</li>
+        <li><span class="ok">✓</span> Formulario de postulación / voluntariado</li>
+        <li><span class="ok">✓</span> Botón de donación vía Mercado Pago</li>
+        <li><span class="ok">✓</span> Galería multimedia (fotos y videos)</li>
+        <li><span class="ok">✓</span> Google Analytics + Search Console</li>
+        <li><span class="ok">✓</span> Optimización SEO básica</li>
+      </ul>
+      <div class="bloque-tit">📧 Correo Profesional</div>
+      <ul class="items">
+        <li><span class="ok">✓</span> Hasta 5 cuentas configuradas</li>
+        <li><span class="ok">✓</span> Configuración completa DNS y dominio</li>
+        <li><span class="ok">✓</span> Capacitación al equipo (1 sesión online)</li>
+      </ul>
+    </div>
+    <div class="plan-foot">
+      <p>⏱ Plazo: <strong>4 a 6 semanas</strong> · Para fundaciones con proyectos activos y crecimiento planificado.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- CONDICIONES WEB -->
+<div class="cond-wrap">
+  <div class="cond-card">
+    <h2>Condiciones generales de desarrollo</h2>
+    <div class="cond-grid">
+      <div class="cond-item"><h3>Forma de pago</h3><p>50% al inicio del proyecto · 50% contra entrega del sitio terminado.</p></div>
+      <div class="cond-item"><h3>Dominio y hosting</h3><p>El costo de dominio (.cl) y hosting corre por cuenta del cliente. Se asesora en la contratación.</p></div>
+      <div class="cond-item"><h3>Correo profesional</h3><p>Google Workspace (~$6 USD/cuenta/mes) o Zoho Mail (plan gratuito disponible). El cliente contrata directamente.</p></div>
+      <div class="cond-item"><h3>Revisiones</h3><p>Cada plan incluye hasta 2 rondas de revisiones antes de la entrega final.</p></div>
+      <div class="cond-item"><h3>Donaciones</h3><p>Integración vía link de Mercado Pago. La comisión por transacción (~3–4%) la asume la fundación.</p></div>
+      <div class="cond-item"><h3>Propiedad</h3><p>Al finalizar el pago, el cliente tiene propiedad total del sitio y sus contenidos.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ PARTE 2 ══ -->
+<div class="parte-sep">
+  <span class="parte-num">02</span>
+  <span class="parte-titulo">Pack Mensual · Mantención Web + Redes Sociales</span>
+</div>
+
+<div class="seccion">
+  <div class="seccion-label">Pago mensual recurrente</div>
+  <div class="seccion-titulo">Gestión continua y presencia digital</div>
+  <div class="seccion-desc">Todos los planes incluyen mantención del sitio web con soporte en horario laboral y creación de contenido para redes sociales. Sin contrato de permanencia mínima.</div>
+</div>
+
+<div class="packs">
+
+  <!-- PACK BÁSICO -->
+  <div class="pack">
+    <div class="pack-head">
+      <div class="pack-emoji">📋</div>
+      <div class="pack-nombre">Pack Básico</div>
+      <div class="pack-tagline">Web activa + presencia esencial en redes. Ideal para comenzar.</div>
+      <div class="pack-precio-wrap">
+        <div class="pack-precio-label">Mensual</div>
+        <div class="pack-precio">$150.000 <span class="pack-precio-unit">CLP/mes</span></div>
+      </div>
+    </div>
+    <div class="pack-body">
+      <div class="bloque-tit">🌐 Mantención Web</div>
+      <ul class="items">
+        <li><span class="ok">✓</span> Actualización de textos e imágenes</li>
+        <li><span class="ok">✓</span> Revisión mensual de funcionamiento</li>
+        <li><span class="ok">✓</span> Soporte en horario laboral vía WhatsApp</li>
+      </ul>
+      <div class="bloque-tit">📱 Redes Sociales</div>
+      <div class="redes-chips">
+        <span class="chip activo">Instagram ✓</span>
+        <span class="chip activo">Facebook ✓</span>
+        <span class="chip">TikTok —</span>
+        <span class="chip">LinkedIn —</span>
+      </div>
+      <ul class="items">
+        <li><span class="ok">✓</span> Creación y configuración de perfiles</li>
+        <li><span class="ok">✓</span> 8 publicaciones al mes (4 por red)</li>
+        <li><span class="ok">✓</span> Creación de contenido con identidad visual</li>
+        <li><span class="ok">✓</span> Redacción de textos y hashtags</li>
+        <li class="off"><span class="no">✗</span> Stories o contenido efímero</li>
+        <li class="off"><span class="no">✗</span> Respuesta a comentarios/mensajes</li>
+        <li class="off"><span class="no">✗</span> Reels o videos</li>
+      </ul>
+    </div>
+    <div class="pack-foot">
+      <p><strong>Ideal para:</strong> fundaciones que quieren presencia digital sin mucho movimiento de contenido todavía.</p>
+    </div>
+  </div>
+
+  <!-- PACK COMPLETO -->
+  <div class="pack estrella">
+    <div class="pack-top-tag">⭐ Más recomendado</div>
+    <div class="pack-head">
+      <div class="pack-emoji">📈</div>
+      <div class="pack-nombre">Pack Completo</div>
+      <div class="pack-tagline">Web + redes activas con contenido constante y comunidad.</div>
+      <div class="pack-precio-wrap">
+        <div class="pack-precio-label">Mensual</div>
+        <div class="pack-precio">$250.000 <span class="pack-precio-unit">CLP/mes</span></div>
+      </div>
+    </div>
+    <div class="pack-body">
+      <div class="bloque-tit">🌐 Mantención Web</div>
+      <ul class="items">
+        <li><span class="ok">✓</span> Actualización de contenidos sin límite</li>
+        <li><span class="ok">✓</span> Revisión mensual + reporte de visitas</li>
+        <li><span class="ok">✓</span> Respaldo mensual del sitio</li>
+        <li><span class="ok">✓</span> Soporte en horario laboral vía WhatsApp y correo</li>
+      </ul>
+      <div class="bloque-tit">📱 Redes Sociales</div>
+      <div class="redes-chips">
+        <span class="chip activo">Instagram ✓</span>
+        <span class="chip activo">Facebook ✓</span>
+        <span class="chip">TikTok —</span>
+        <span class="chip">LinkedIn —</span>
+      </div>
+      <ul class="items">
+        <li><span class="ok">✓</span> 16 publicaciones al mes (8 por red)</li>
+        <li><span class="ok">✓</span> Creación de contenido con identidad visual</li>
+        <li><span class="ok">✓</span> Stories 2 veces por semana</li>
+        <li><span class="ok">✓</span> Programación de publicaciones</li>
+        <li><span class="ok">✓</span> Respuesta a comentarios (48h hábiles)</li>
+        <li><span class="ok">✓</span> Reporte mensual de métricas básicas</li>
+        <li class="off"><span class="no">✗</span> Reels o videos editados</li>
+      </ul>
+    </div>
+    <div class="pack-foot">
+      <p><strong>Ideal para:</strong> fundaciones que quieren construir comunidad activa y presencia digital constante.</p>
+    </div>
+  </div>
+
+  <!-- PACK PREMIUM -->
+  <div class="pack">
+    <div class="pack-head">
+      <div class="pack-emoji">🎯</div>
+      <div class="pack-nombre">Pack Premium</div>
+      <div class="pack-tagline">Gestión completa de web + 4 redes con contenido avanzado.</div>
+      <div class="pack-precio-wrap">
+        <div class="pack-precio-label">Mensual</div>
+        <div class="pack-precio">$380.000 <span class="pack-precio-unit">CLP/mes</span></div>
+      </div>
+    </div>
+    <div class="pack-body">
+      <div class="bloque-tit">🌐 Mantención Web</div>
+      <ul class="items">
+        <li><span class="ok">✓</span> Todo lo del Pack Completo</li>
+        <li><span class="ok">✓</span> Hasta 5 modificaciones estructurales/mes</li>
+        <li><span class="ok">✓</span> Respaldo semanal del sitio</li>
+        <li><span class="ok">✓</span> Soporte prioritario en horario laboral</li>
+      </ul>
+      <div class="bloque-tit">📱 Redes Sociales</div>
+      <div class="redes-chips">
+        <span class="chip activo">Instagram ✓</span>
+        <span class="chip activo">Facebook ✓</span>
+        <span class="chip activo">TikTok ✓</span>
+        <span class="chip activo">LinkedIn ✓</span>
+      </div>
+      <ul class="items">
+        <li><span class="ok">✓</span> 24+ publicaciones al mes</li>
+        <li><span class="ok">✓</span> Creación de contenido para 4 redes</li>
+        <li><span class="ok">✓</span> Stories diarias (Instagram)</li>
+        <li><span class="ok">✓</span> 2 Reels o TikToks editados/mes</li>
+        <li><span class="ok">✓</span> Gestión de mensajes directos</li>
+        <li><span class="ok">✓</span> Reporte mensual completo con análisis</li>
+        <li><span class="ok">✓</span> Estrategia de contenido mensual</li>
+      </ul>
+    </div>
+    <div class="pack-foot">
+      <p><strong>Ideal para:</strong> fundaciones con proyectos activos que necesitan comunicación constante en todas las plataformas.</p>
+    </div>
+  </div>
+
+</div>
+
+<div class="divisor"></div>
+
+<!-- REDES GUÍA -->
+<div class="redes-section">
+  <div class="seccion-label">Guía de redes</div>
+  <div class="seccion-titulo">¿Qué red conviene a la fundación?</div>
+  <div class="seccion-desc">Cada plataforma tiene un propósito distinto. Partir con todas a la vez no siempre es la mejor estrategia.</div>
+  <div class="redes-grid">
+    <div class="red-card">
+      <h3>📸 Instagram <span class="dificultad dif-baja">Recomendada</span></h3>
+      <p>Red visual ideal para mostrar eventos, rutas y actividades de la comunidad. El público chileno es muy activo aquí y permite humanizar la fundación.</p>
+      <p class="rec">→ Partir aquí desde el primer mes</p>
+    </div>
+    <div class="red-card">
+      <h3>📘 Facebook <span class="dificultad dif-baja">Recomendada</span></h3>
+      <p>Excelente para distintas edades, compartir eventos y noticias. Los grupos son muy útiles para comunidades moteras en regiones de Chile.</p>
+      <p class="rec">→ Partir aquí desde el primer mes</p>
+    </div>
+    <div class="red-card">
+      <h3>🎵 TikTok <span class="dificultad dif-media">Opcional</span></h3>
+      <p>Gran alcance orgánico con videos cortos. El contenido de motos tiene mucha tracción. Mejor incorporarlo cuando haya actividad y material frecuente.</p>
+      <p class="rec">→ Considerar desde el mes 3 o 4</p>
+    </div>
+    <div class="red-card">
+      <h3>💼 LinkedIn <span class="dificultad dif-media">Opcional</span></h3>
+      <p>Ideal para conectar con empresas sponsors y aliados institucionales. Requiere contenido más formal orientado al impacto social.</p>
+      <p class="rec">→ Considerar cuando busquen alianzas</p>
+    </div>
+  </div>
+</div>
+
+<!-- NOTA FINAL -->
+<div class="nota-section">
+  <h3>💡 Importante antes de decidir</h3>
+  <p>Para que la gestión de redes funcione bien, <strong>la fundación debe compartir fotos y videos de sus actividades mensualmente</strong> — sin ese material real, el contenido pierde autenticidad. Lo que yo aporto es el diseño, la redacción, la estrategia y la constancia. Trabajamos juntos para que <strong>Fundación Motos en Chile</strong> tenga una presencia digital profesional y coherente desde el primer día.</p>
+</div>
+
+<!-- FOOTER -->
+<div class="footer-doc">
+  Propuesta válida por <strong>30 días</strong> · Precios incluyen IVA · Elaborada por <strong>Paula Castillo Beltrán</strong> · <strong>[tu@correo.com]</strong> · <strong>[+56 9 XXXX XXXX]</strong>
+</div>
+
+</body>
+</html>
